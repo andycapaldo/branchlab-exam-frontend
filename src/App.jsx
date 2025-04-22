@@ -1,17 +1,14 @@
-import { useState } from 'react'
 import './App.css'
-import MedicalInfo from './components/MedicalInfo';
+import MedicalInfo from './components/MedicalInfo/MedicalInfo';
 
 function App() {
 
   return (
-    <>
       <div className='container'>
         <MedicalInfo />
         <MedicalInfo />
         <MedicalInfo />
       </div>
-    </>
   )
 }
 

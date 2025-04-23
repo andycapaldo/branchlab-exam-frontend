@@ -2,10 +2,9 @@ import './MedicalInfo.css';
 import Loader from '../Loader/Loader';
 
 function Card(props) {
-    const { drug, isLoading, error } = props;
+    const { drug, isLoading } = props;
 
     if (isLoading) return <Loader />;
-    if (error) return <p >Error loading drug info: {error}</p>
     if (!drug) return <p>No drug data found.</p>;
 
     return (

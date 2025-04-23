@@ -27,7 +27,7 @@
 }
 
 .subheader {
-    font-size: 14px;
+    font-size: 16px;
     color: #888;
     margin: 2px 0 0 0;
 }
@@ -36,6 +36,7 @@
     font-weight: bold;
     display: inline-block;
     margin: 8px 0 2px 0;
+    font-size: 16px;
 }
 
 .card-body p {

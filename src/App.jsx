@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import './App.css'
 import MedicalInfo from './components/MedicalInfo/MedicalInfo';
+import Error from './components/Error/Error';
+import { RotatingLines } from 'react-loader-spinner';
 
 function App() {
     const [drugs, setDrugs] = useState([]);
@@ -17,6 +19,7 @@ function App() {
                     setDrugs(data);
                 } else {
                     console.error('Failed to Fetch:', res.statusText)
+                    setError('Failed to fetch data: ' + res.status);
                 }
             } catch (error) {
                 setError(error.message);
@@ -29,15 +32,29 @@ function App() {
         fetchData();
     }, []);
 
-  return (
-      <div className='container'>
-        {drugs && drugs.length > 1 &&
-          drugs.map((drug, index) => (
-            <MedicalInfo key={index} drug={drug} isLoading={isLoading} error={error} />
-          ))
-        }
-      </div>
-  )
+
+    if (error) {
+        return <div className='container'><Error error={error} /></div>;
+    }
+
+    if (isLoading && !error) {
+        return (
+            <div className='container'>
+                <RotatingLines strokeColor='#007BFF' />
+            </div>
+        );
+    }
+
+return (
+        <div className='container'>
+            {drugs.map((drug, index) => (
+                    <MedicalInfo key={index} drug={drug} isLoading={isLoading} />
+                ))
+            }
+            {/* For use of obtaining a single drug object via the /api/drug/{drug_name} endpoint */}
+            {/* <MedicalInfo drug={drugs} isLoading={isLoading} />  */}
+        </div>
+    )
 }
 
 export default App

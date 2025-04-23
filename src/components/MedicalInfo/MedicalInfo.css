@@ -5,7 +5,6 @@
     background-color: white;
     border-radius: 12px;
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
-    font-family: sans-serif;
     color: #1a1a1a;
 }
 
@@ -28,7 +27,7 @@
 }
 
 .subheader {
-    font-size: 16px;
+    font-size: 14px;
     color: #888;
     margin: 2px 0 0 0;
 }
@@ -40,7 +39,7 @@
 }
 
 .card-body p {
-    font-size: 16px;
+    font-size: 14px;
     margin: 0;
 }
 

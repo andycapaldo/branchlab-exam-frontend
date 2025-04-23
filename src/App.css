@@ -5,9 +5,14 @@ body {
 }
 
 .container {
-  height: 100vh;
+  height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  overflow-y: scroll;
+
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  box-sizing: border-box;
 }

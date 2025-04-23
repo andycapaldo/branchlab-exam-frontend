@@ -13,13 +13,13 @@ function App() {
         const fetchData = async () => {
             setIsLoading(true);
             try {
-                let res = await fetch("https://branchlab-exam-backend.onrender.com/api/drug");
-                if (res.ok){
-                    let data = await res.json();
+                const response = await fetch("http://127.0.0.1:8000/api/drug");
+                if (response.ok){
+                    const data = await response.json();
                     setDrugs(data);
                 } else {
-                    console.error('Failed to Fetch:', res.statusText)
-                    setError('Failed to fetch data: ' + res.status);
+                    console.error('Failed to Fetch:', response.statusText)
+                    setError('Failed to fetch data: ' + response.status);
                 }
             } catch (error) {
                 setError(error.message);
@@ -33,24 +33,19 @@ function App() {
     }, []);
 
 
-    if (error) {
-        return <div className='container'><Error error={error} /></div>;
-    }
-
-    if (isLoading && !error) {
-        return (
-            <div className='container'>
-                <RotatingLines strokeColor='#007BFF' />
-            </div>
-        );
-    }
-
 return (
         <div className='container'>
-            {drugs.map((drug, index) => (
+            {error ? (
+                <div><Error error={error} /></div>
+            ) : isLoading && !error ? (
+                <div>
+                    <RotatingLines strokeColor='#007BFF' />
+                </div>
+            ) : (
+                drugs.map((drug, index) => (
                     <MedicalInfo key={index} drug={drug} isLoading={isLoading} />
                 ))
-            }
+            )}
             {/* For use of obtaining a single drug object via the /api/drug/{drug_name} endpoint */}
             {/* <MedicalInfo drug={drugs} isLoading={isLoading} />  */}
         </div>

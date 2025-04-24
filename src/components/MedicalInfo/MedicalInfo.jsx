@@ -13,8 +13,8 @@ function Card(props) {
             <div className='header'>   
                 <i className="fa-solid fa-tablets fa-2xl icon"></i>
                 <div>
-                    <h3>{brand_name}</h3>
-                    <p className='subheader'>{name}</p>
+                    <h3>{name}</h3>
+                    <p className='subheader'>{brand_name}</p>
                 </div>
             </div>
             <div className='card-body'>
